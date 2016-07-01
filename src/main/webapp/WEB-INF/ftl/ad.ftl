@@ -1,12 +1,9 @@
 <html>
 <head>
     <titleFreeMarker Kauppapaikka</title>
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen" />
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body style="background-color: floralwhite">
     <div class="container">
@@ -38,8 +35,8 @@
                     </div>
                 </#if>
                 <#if model.ad.imageUrl??>
-                    <div style="margin-bottom: 40px;">
-                        <img src="${model.ad.imageUrl}" style="max-height: 500px; max-width: 800px"/>
+                    <div style="margin-bottom: 40px; max-height: 600px; max-width: 750px">
+                        <img src="${model.ad.imageUrl}" class="img-responsive" style="max-height: 600px"/>
                     </div>
                 </#if>
                 <#if model.ad.description??>
