@@ -27,6 +27,7 @@
             </nav>
         </div>
         <div id="content">
+            <!-- ilmoituksen jättö lomake-->
             <fieldset>
                 <legend>Lisää ilmoitus</legend>
                 <form class="form-horizontal" name="ad" action="" method="post">

@@ -56,6 +56,8 @@
                 </div>
             </nav>
         </div>
+
+        <!-- listataan ilmoitukset kolmen ilmoituksen riveihin. -->
         <div id="content">
             <#list model["marketads"]?chunk(3) as marketads>
                 <div>

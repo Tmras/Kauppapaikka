@@ -28,6 +28,8 @@
                 </div>
             </nav>
         </div>
+
+        <!-- näytetään ilmoituksen tiedot, jos ne löytyvät-->
         <div id="content">
             <div class="container">
                 <#if model.ad.title??>
