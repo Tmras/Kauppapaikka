@@ -16,7 +16,7 @@
             </div>
             <nav class="navbar navbar-default" style="background-color: lightgreen">
                 <div class="container text-center">
-                    <div id="navbar" class="collapse navbar-collapse">
+                    <div id="navbar" class="collapse navbar-collapse" id="nav">
                         <ul class="nav navbar-nav">
                             <li><a href="/index.ftl">Etusivu</a></li>
                             <li><a href="/newad.ftl">Jätä ilmoitus</a></li>
@@ -63,6 +63,9 @@
                         <p>${model.ad.phone}</p>
                     </div>
                 </#if>
+            </div>
+            <div>
+               <p><a class="btn btn-primary btn-lg" href="/index.ftl" role="button">Etusivulle</a></p>
             </div>
         </div>
     </div>

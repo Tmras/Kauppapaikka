@@ -60,7 +60,7 @@
                 <div>
                     <div class="row">
                     <#if marketads[0]??>
-                        <div class="col-sm-4">
+                        <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading" style="background-color: lightgreen">
                                     <#if marketads[0].thumbnailUrl??>
@@ -78,7 +78,7 @@
                         </div>
                     </#if>
                     <#if marketads[1]??>
-                        <div class="col-sm-4">
+                        <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading" style="background-color: lightgreen">
                                     <#if marketads[1].thumbnailUrl??>
@@ -96,7 +96,7 @@
                         </div>
                     </#if>
                     <#if marketads[2]??>
-                        <div class="col-sm-4">
+                        <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading" style="background-color: lightgreen">
                                     <#if marketads[2].thumbnailUrl??>
