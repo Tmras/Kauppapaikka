@@ -1,5 +1,7 @@
 package Kauppapaikka.controller;
 
+import Kauppapaikka.AdRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +17,15 @@ import Kauppapaikka.domain.MarketAd;
 @Controller
 public class AdController {
 
+    @Autowired
+    private AdRepository repository;
 
     /*
      * Tämä luo sivuston etusivun, jossa on listattuna kaikki ilmoitukset.
      */
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(@ModelAttribute("model") ModelMap model) {
-        RestTemplate restTemplate = new RestTemplate();
-        String url=""; //mistä haetaan
-        //haetaan listaan kaikki ilmoituksen back-endista MarketAd olioiksi muutettuna
-        List<MarketAd> marketads = (ArrayList<MarketAd>) restTemplate.getForObject(url, List.class);
-        //lähetetään lista eteenpäin
+        List<MarketAd> marketads = repository.findAll();
         model.addAttribute("marketads", marketads);
         return "index";
     }
@@ -35,10 +35,8 @@ public class AdController {
      */
     @RequestMapping(value = "/ad/{id}", method = RequestMethod.GET)
     public String ad(@ModelAttribute("model") ModelMap model, @PathVariable String id) {
-        RestTemplate restTemplate = new RestTemplate();
-        String url=""+id; //mistä haetaan
         //haetaan muuttujan id yksilöimä ilmoitus
-        MarketAd ad = restTemplate.getForObject(url, MarketAd.class);
+        MarketAd ad = repository.findById(id);
         model.addAttribute("ad", ad);
         return "ad";
     }
@@ -58,13 +56,9 @@ public class AdController {
     @RequestMapping(value="/newad", method=RequestMethod.POST)
     public String newAd(@ModelAttribute MarketAd ad) {
         String view;
-        RestTemplate restTemplate = new RestTemplate();
-        String url = ""; //minne lähetetään
         //katsotaan onnistuuko lähetys, ja annetaan näkymä, joka kertoo lopputuloksen
         try {
-            String apiResponse = restTemplate.postForObject(url, ad, String.class);
-            //tällä vain varmistetaan, että oikeanlainen tulos on tullut
-            System.out.println(apiResponse);
+            repository.save(ad);
             view = "success";
         }
         catch(Exception e) {
