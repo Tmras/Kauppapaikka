@@ -22,7 +22,7 @@ public class AdController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(@ModelAttribute("model") ModelMap model) {
         RestTemplate restTemplate = new RestTemplate();
-        String url="http://mepa-store-api.herokuapp.com/marketads"; //mistä haetaan
+        String url=""; //mistä haetaan
         //haetaan listaan kaikki ilmoituksen back-endista MarketAd olioiksi muutettuna
         List<MarketAd> marketads = (ArrayList<MarketAd>) restTemplate.getForObject(url, List.class);
         //lähetetään lista eteenpäin
@@ -36,7 +36,7 @@ public class AdController {
     @RequestMapping(value = "/ad/{id}", method = RequestMethod.GET)
     public String ad(@ModelAttribute("model") ModelMap model, @PathVariable String id) {
         RestTemplate restTemplate = new RestTemplate();
-        String url="http://mepa-store-api.herokuapp.com/marketads/"+id; //mistä haetaan
+        String url=""+id; //mistä haetaan
         //haetaan muuttujan id yksilöimä ilmoitus
         MarketAd ad = restTemplate.getForObject(url, MarketAd.class);
         model.addAttribute("ad", ad);
@@ -59,7 +59,7 @@ public class AdController {
     public String newAd(@ModelAttribute MarketAd ad) {
         String view;
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://mepa-store-api.herokuapp.com/marketads/"; //minne lähetetään
+        String url = ""; //minne lähetetään
         //katsotaan onnistuuko lähetys, ja annetaan näkymä, joka kertoo lopputuloksen
         try {
             String apiResponse = restTemplate.postForObject(url, ad, String.class);
